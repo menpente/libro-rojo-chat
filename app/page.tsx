@@ -60,26 +60,33 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-1 flex-col bg-zinc-50 font-sans dark:bg-black">
-      <header className="border-b border-zinc-200 bg-white px-6 py-4 dark:border-zinc-800 dark:bg-black">
-        <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-          El libro rojo de Cálamo &amp; Cran
-        </h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          Pregunta tus dudas de ortografía y estilo. Las respuestas se basan en el prontuario.
-        </p>
+    <div className="flex flex-1 flex-col bg-calamo-paper font-sans">
+      <header className="border-b border-calamo-border bg-calamo-surface px-6 py-5">
+        <div className="mx-auto flex w-full max-w-3xl items-center gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-calamo-primary font-serif text-lg font-semibold text-white">
+            C
+          </span>
+          <div>
+            <h1 className="font-serif text-2xl font-semibold leading-tight text-calamo-ink">
+              El libro rojo de Cálamo &amp; Cran
+            </h1>
+            <p className="text-sm text-calamo-text-muted">
+              Pregunta tus dudas de ortografía y estilo. Las respuestas se basan en el prontuario.
+            </p>
+          </div>
+        </div>
       </header>
 
       <div ref={scrollRef} className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-4 overflow-y-auto px-4 py-6">
         {messages.length === 0 && (
-          <div className="flex flex-col gap-3 rounded-lg border border-dashed border-zinc-300 p-6 text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
-            <p>Prueba con alguna de estas preguntas:</p>
+          <div className="flex flex-col gap-3 rounded-lg bg-calamo-surface-alt p-6 text-sm text-calamo-text-muted">
+            <p className="font-medium text-calamo-ink">Prueba con alguna de estas preguntas:</p>
             <div className="flex flex-wrap gap-2">
               {EXAMPLE_QUESTIONS.map((q) => (
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
-                  className="rounded-full border border-zinc-300 px-3 py-1.5 text-left text-xs text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
+                  className="rounded-md border border-calamo-primary bg-calamo-surface px-3 py-1.5 text-left text-xs font-semibold text-calamo-primary transition-colors hover:bg-calamo-primary hover:text-white"
                 >
                   {q}
                 </button>
@@ -94,10 +101,10 @@ export default function Home() {
             className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+              className={`max-w-[80%] whitespace-pre-wrap rounded-lg px-4 py-2.5 text-[0.95rem] leading-relaxed ${
                 message.role === "user"
-                  ? "bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900"
-                  : "bg-white text-zinc-900 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:text-zinc-100 dark:ring-zinc-800"
+                  ? "bg-calamo-primary text-white"
+                  : "border border-calamo-border bg-calamo-surface text-calamo-text"
               }`}
             >
               {message.content}
@@ -107,32 +114,32 @@ export default function Home() {
 
         {loading && (
           <div className="flex justify-start">
-            <div className="max-w-[80%] rounded-2xl bg-white px-4 py-2.5 text-sm text-zinc-400 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
+            <div className="max-w-[80%] rounded-lg border border-calamo-border bg-calamo-surface px-4 py-2.5 text-sm text-calamo-text-muted">
               Escribiendo…
             </div>
           </div>
         )}
 
         {error && (
-          <div className="rounded-lg border border-red-300 bg-red-50 px-4 py-2.5 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300">
+          <div className="rounded-lg border border-calamo-error/40 bg-calamo-error/10 px-4 py-2.5 text-sm text-calamo-error">
             {error}
           </div>
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="border-t border-zinc-200 bg-white px-4 py-4 dark:border-zinc-800 dark:bg-black">
+      <form onSubmit={handleSubmit} className="border-t border-calamo-border bg-calamo-surface px-4 py-4">
         <div className="mx-auto flex w-full max-w-3xl gap-2">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Escribe tu duda de estilo u ortografía…"
-            className="flex-1 rounded-full border border-zinc-300 bg-white px-4 py-2.5 text-sm text-zinc-900 outline-none focus:border-zinc-500 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100"
+            className="flex-1 rounded-md border border-calamo-border bg-white px-3.5 py-3 text-[1rem] text-calamo-text outline-none focus:border-calamo-primary"
             disabled={loading}
           />
           <button
             type="submit"
             disabled={loading || input.trim().length === 0}
-            className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-40 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+            className="rounded-md bg-calamo-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-calamo-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
           >
             Enviar
           </button>

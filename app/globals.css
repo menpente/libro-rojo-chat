@@ -1,26 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --calamo-primary: #b3262d;
+  --calamo-primary-dark: #8f1f25;
+  --calamo-ink: #1f2937;
+  --calamo-paper: #f7f3ee;
+  --calamo-surface: #fffdf9;
+  --calamo-surface-alt: #f3eee7;
+  --calamo-text: #1c1b1a;
+  --calamo-text-muted: #5f5a55;
+  --calamo-border: #d9d1c7;
+  --calamo-success: #2f6b3d;
+  --calamo-warning: #a66321;
+  --calamo-error: #a12828;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-calamo-primary: var(--calamo-primary);
+  --color-calamo-primary-dark: var(--calamo-primary-dark);
+  --color-calamo-ink: var(--calamo-ink);
+  --color-calamo-paper: var(--calamo-paper);
+  --color-calamo-surface: var(--calamo-surface);
+  --color-calamo-surface-alt: var(--calamo-surface-alt);
+  --color-calamo-text: var(--calamo-text);
+  --color-calamo-text-muted: var(--calamo-text-muted);
+  --color-calamo-border: var(--calamo-border);
+  --color-calamo-success: var(--calamo-success);
+  --color-calamo-warning: var(--calamo-warning);
+  --color-calamo-error: var(--calamo-error);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--calamo-paper);
+  color: var(--calamo-text);
+  font-family: var(--font-sans);
 }
