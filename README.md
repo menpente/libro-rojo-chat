@@ -30,6 +30,16 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000).
 
+## Despliegue en Vercel
+
+1. Importa este repositorio en [Vercel](https://vercel.com/new) (detecta Next.js automáticamente, sin configuración adicional).
+2. En **Project Settings → Environment Variables**, añade:
+   - `HF_TOKEN`: tu token de Hugging Face.
+   - `HF_MODEL` (opcional): por defecto `meta-llama/Llama-3.1-8B-Instruct`.
+3. Despliega. Vercel te da una URL pública estable (`tu-proyecto.vercel.app`).
+
+`data/libro-rojo.md` está commiteado en el repo, así que no hace falta regenerar nada durante el despliegue.
+
 ## Regenerar el Markdown del libro
 
 Si el PDF cambia, se puede regenerar `data/libro-rojo.md` con:
